@@ -53,7 +53,7 @@
 #end
  #Arreglos en ruby
 
-frutas=['Manzana','Pera','Uva','Anon','Durazno']
+#frutas=['Manzana','Pera','Uva','Anon','Durazno']
 
 #frutas.each do |fruta| # ciclo each recorre un arreglo
 #puts fruta
@@ -94,10 +94,89 @@ frutas=['Manzana','Pera','Uva','Anon','Durazno']
 #10.downto(5) do |valor| # nos muestra los numeros de 10-5
 #puts valor
 #end
-#hashes
-persona={"nombre"=>"Luis","edad"=>37}
-puts persona["edad"]
 
-persona.each do |clave,valor|
-puts "La clave es #{clave} y el valor es #{valor}"
+
+#hashes
+#persona={"nombre"=>"Luis","edad"=>37}
+#puts persona["edad"]
+
+#persona.each do |clave,valor|
+#puts "La clave es #{clave} y el valor es #{valor}"
+#end
+
+#persona={"nombre"=>"Luis","edad"=>37}
+#puts persona.length #recorre el hashes y muestra la cantidad de posiciones
+
+#puts persona.has_key?("estatura") # devuelve verdadero o falso si hay una llave dentro del hashes
+
+#puts persona.keys # muestra si existen las llaves dentro del hashes
+
+#persona={nombre: Luis, edad: 37}# con simbolos":" no se pueden editar pr proteccion
+#puts persona[:nombre]
+
+#metodo
+def cuadrado(numero)
+    return numero*numero
 end
+#puts "Ingresa un numero"
+#mi_numero=gets.chomp.to_f #obtener el valor 
+#puts "El cuadrado es #{cuadrado(mi_numero)}"
+
+#def hola_personas(*personas)
+#personas.each.do |persona|
+
+#puts "Hola #{persona}"
+#end
+#end
+
+#gente=['Jaime','Pedro','Maria']
+#hola_personas('Jaime','Pedro','Maria','Santiago')
+#El operador splat convierte todos los parametros que enviemos en un arreglo dentro del metodo
+
+#def suma(num1:0, num2:0)
+#  return num1+num2
+#end
+#puts suma(num2:5) #keyword argument me permite bautizar los parametros de tal modo que puedo llamarlos en cualquier orden para utilizarlos y tambien me permite inicializarlos y este valor inicial el metodo lo utiliza si no se envia un parametro
+#puts suma(num2:5,num1:7)
+
+class Persona
+attr_accessor :nombre, :edad #definicion de variables
+
+    def initialize(nombre,edad)
+
+     self.nombre= nombre
+     self.edad=edad
+
+    end
+
+    def saludar    #definicion de metodos
+       puts "Hola" 
+    end
+
+end
+
+class Alumno<Persona
+ attr_accessor :codigo
+
+  def estudiar
+  puts "Estoy estudiando"
+  end
+
+  def saludar 
+     super  #va a ejecutar el metodo #saludar de la clase padre 
+     puts "Profe"
+  end
+end	
+persona1=Persona.new("Luis",37) #definicion de objetos
+persona2=Persona.new("Maria",26)
+
+#persona1.nombre= "Luis"
+#persona2.nombre= "Maria"
+
+persona2.saludar
+#puts "El nombre de la persona es #{persona2.nombre}, y su edad es #{persona2.edad} años"
+
+alumno1=Alumno.new("Pepe",24)
+puts "El alumno #{alumno1.nombre}"
+
+alumno1.saludar
